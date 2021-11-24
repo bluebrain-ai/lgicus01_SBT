@@ -8,6 +8,7 @@ import java.util.*;
 
 import javax.validation.constraints.NotBlank;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.bluescript.demo.model.CaCustomerRequest;
 import com.bluescript.demo.model.CaCustsecrRequest;
@@ -22,8 +23,11 @@ public class Dfhcommarea {
     private int caReturnCode;
     private long caCustomerNum;
     private String caRequestSpecific;
+
     private CaCustomerRequest caCustomerRequest;
+
     private CaCustsecrRequest caCustsecrRequest;
+
     private CaPolicyRequest caPolicyRequest;
 
     public String toFixedWidthString() {

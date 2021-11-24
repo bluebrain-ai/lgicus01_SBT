@@ -100,9 +100,8 @@ public class Lgicus01 {
     @Autowired
     private MqControlRepository mqControl;
 
-    private int testControlItemKeyId;
-    @Autowired
-    private TestControlRepository testControl;
+    private int testControlItemKeyId = 01;
+
     private String wsTime;
     private String wsDate;
     private String caData;
@@ -121,14 +120,18 @@ public class Lgicus01 {
     // @Value({})
 
     // @Value(value = "#{\"${api.lgicdb01}\".trim()})")
-    @Value("${api.lgicdb01}")
+    @Value("${api.lgicdb01.uri}")
     private String lgicdb01_URI;
-    @Value("${api.aaaaaaaa}")
+    @Value("${api.aaaaaaaa.uri}")
     private String aaaaaaaa_URI;
-    @Value("${api.lgstsq}")
+    @Value("${api.lgstsq.uri}")
     private String lgstsq_URI;
     private WebClient webClientBuilder;
     private String wsAbstime;
+    @Value("${api.lgstsq.host}")
+    private String LQSTSQ_HOST;
+    @Value("${api.lgicdb01.host}")
+    private String LGICDB01_HOST;
 
     // @CrossOrigin(origins = "http://localhost:4200")
     @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -143,7 +146,7 @@ public class Lgicus01 {
          */
         // copy request payload to dfhcommarea autowired
         BeanUtils.copyProperties(payload, dfhcommarea);
-        System.out.println("dfhcommarea.getCaCustomerNum():"+dfhcommarea.getCaCustomerNum());
+        System.out.println("dfhcommarea.getCaCustomerNum():" + dfhcommarea.getCaCustomerNum());
         dfhcommarea.setCaReturnCode(00);
         caCustomerRequest.setCaNumPolicies(00);
         wsRequiredCaLen = wsCustomerLen;
@@ -157,38 +160,40 @@ public class Lgicus01 {
         getCustomerInfo();
 
         log.debug("Method mainline completed..");
-        System.out.println("dfhcommarea.getCaCustomerNum():" + dfhcommarea.getCaCustomerNum());
+        log.info("dfhcommarea.getCaCustomerNum():" + dfhcommarea.getCaCustomerRequest().getCaFirstName());
         return new ResponseEntity<>(dfhcommarea, HttpStatus.OK);
 
     }
 
     public void getCustomerInfo() {
-        WebClient webClientBuilder = WebClient.create("http://localhost:9090");
+        WebClient webClientBuilder = WebClient.create(LGICDB01_HOST);
         log.debug("MethodgetCustomerInfostarted..");
         mqHit = 0;
 
-        // Testing code for redis
+        // // Testing code for redis
         MqReadRecord m = new MqReadRecord();
-        m.setId(01);
+        m.setId(03);
         m.setMqRecord("MQHIT= LGICUS01 Record from Redis");
-        MqReadRecord saved = mqControl.save(m);
-        log.warn("Saved:", saved);
+        mqControl.save(m);
+   
 
-        String mqReadRecord = mqControl.findById(01).orElseThrow().getMqRecord();
+        // String mqReadRecord = mqControl.findById(01).orElseThrow().getMqRecord();
         testControlItemKeyId = 01;
-        System.out.println("mqReadRecord:" + mqReadRecord);
+       log.info("mqReadRecord:" + mqReadRecord);
         if (mqReadRecord != null) {
 
             do {
                 try {
-                    mqReadRecord = mqControl.findById(Integer.valueOf(testControlItemKeyId)).orElseThrow().toString();
+                    // mqReadRecord = mqControl.findById(Integer.valueOf(testControlItemKeyId)).get();
+                    mqReadRecord = mqControl.findById(03).get();
+                    log.info("MqReadRecord:" + mqReadRecord.getMqRecord());
                 } catch (Exception e) {
                     log.error(e);
                     wsResp = 1;
 
                 }
 
-                if (mqReadRecord != null && mqReadRecord.substring(0, 6) == "MQHIT=") {
+                if (mqReadRecord != null && mqReadRecord.getMqRecord().substring(0, 6) == "MQHIT=") {
                     mqHit = 1;
                 }
                 testControlItemKeyId = testControlItemKeyId + 1;
@@ -201,6 +206,7 @@ public class Lgicus01 {
                 Mono<Dfhcommarea> lgicdb01Resp = webClientBuilder.post().uri(lgicdb01_URI)
                         .body(Mono.just(dfhcommarea), Dfhcommarea.class).retrieve().bodyToMono(Dfhcommarea.class)
                         .timeout(Duration.ofMillis(10_000));
+                        
                 dfhcommarea = lgicdb01Resp.block();
                 System.out.println("dfhcommarea.getCaCustomerNum():" + dfhcommarea.getCaCustomerNum());
             } catch (Exception e) {
@@ -224,7 +230,7 @@ public class Lgicus01 {
 
     public void writeErrorMessage() {
         log.debug("MethodwriteErrorMessagestarted..");
-        WebClient webClientBuilder = WebClient.create("http://localhost:3001");
+        WebClient webClientBuilder = WebClient.create(LQSTSQ_HOST);
         wsAbstime = LocalTime.now().toString();
         wsAbstime = LocalTime.now().toString();
         wsDate = LocalDate.now().format(DateTimeFormatter.ofPattern("MMDDYYYY"));

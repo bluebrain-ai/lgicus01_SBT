@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-lgicus01Main<lgicus01>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "mainClass": "com.bluescript.demo.lgicus01Main",
+            "projectName": "lgicus01",
+            "args": ""
+        }
+    ]
+}
