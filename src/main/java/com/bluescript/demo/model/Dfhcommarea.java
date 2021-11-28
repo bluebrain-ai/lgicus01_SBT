@@ -7,6 +7,7 @@ import lombok.extern.log4j.Log4j2;
 import java.util.*;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,8 +21,11 @@ import com.bluescript.demo.model.CaPolicyRequest;
 public class Dfhcommarea {
 
     private String caRequestId;
+
     private int caReturnCode;
+
     private long caCustomerNum;
+
     private String caRequestSpecific;
 
     private CaCustomerRequest caCustomerRequest;
