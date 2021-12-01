@@ -24,7 +24,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j2;
 import com.bluescript.demo.repository.MqControlRepository;
-import com.bluescript.demo.repository.TestControlRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -183,8 +182,8 @@ public class Lgicus01 {
 
             do {
                 try {
-                    // mqReadRecord = mqControl.findById(Integer.valueOf(testControlItemKeyId)).get();
-                    mqReadRecord = mqControl.findById(03).get();
+                    mqReadRecord = mqControl.findById(Integer.valueOf(testControlItemKeyId)).get();
+                    // mqReadRecord = mqControl.findById(03).get();
                     log.info("MqReadRecord:" + mqReadRecord.getMqRecord());
                 } catch (Exception e) {
                     log.error(e);
