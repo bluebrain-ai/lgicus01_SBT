@@ -150,16 +150,11 @@ public class Lgicus01 {
         caCustomerRequest.setCaNumPolicies(00);
         wsRequiredCaLen = wsCustomerLen;
         wsRequiredCaLen = wsCaHeadertrailerLen + wsRequiredCaLen;
-        /*
-         * manuallly removed not requried if (eibcalen < wsRequiredCaLen) { dfhcommarea.setCaReturnCode(98); // return
-         * 
-         * }
-         */
-        // emVariable.setEmCusnum(String.valueOf(dfhcommarea.getCaCustomerNum()));
+
         getCustomerInfo();
 
         log.debug("Method mainline completed..");
-        log.info("dfhcommarea.getCaCustomerNum():" + dfhcommarea.getCaCustomerRequest().getCaFirstName());
+        // log.info("dfhcommarea.getCaCustomerNum():" + dfhcommarea.getCaCustomerRequest().getCaFirstName());
         return new ResponseEntity<>(dfhcommarea, HttpStatus.OK);
 
     }
@@ -170,10 +165,10 @@ public class Lgicus01 {
         mqHit = 0;
 
         // // Testing code for redis
-        MqReadRecord m = new MqReadRecord();
-        m.setId(03);
-        m.setMqRecord("MQHIT= LGICUS01 Record from Redis");
-        mqControl.save(m);
+        // MqReadRecord m = new MqReadRecord();
+        // m.setId(03);
+        // m.setMqRecord("MQHIT= LGICUS01 Record from Redis");
+        // mqControl.save(m);
 
         // String mqReadRecord = mqControl.findById(01).orElseThrow().getMqRecord();
         testControlItemKeyId = 01;
