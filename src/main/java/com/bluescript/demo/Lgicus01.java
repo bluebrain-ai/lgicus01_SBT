@@ -175,11 +175,10 @@ public class Lgicus01 {
         m.setId(03);
         m.setMqRecord("MQHIT= LGICUS01 Record from Redis");
         mqControl.save(m);
-   
 
         // String mqReadRecord = mqControl.findById(01).orElseThrow().getMqRecord();
         testControlItemKeyId = 01;
-       log.info("mqReadRecord:" + mqReadRecord);
+        log.info("mqReadRecord:" + mqReadRecord);
         if (mqReadRecord != null) {
 
             do {
@@ -204,9 +203,8 @@ public class Lgicus01 {
             System.out.println("dfhcommarea.getCaCustomerNum():" + dfhcommarea.getCaCustomerNum());
             try {
                 Mono<Dfhcommarea> lgicdb01Resp = webClientBuilder.post().uri(lgicdb01_URI)
-                        .body(Mono.just(dfhcommarea), Dfhcommarea.class).retrieve().bodyToMono(Dfhcommarea.class)
-                        .timeout(Duration.ofMillis(10_000));
-                        
+                        .body(Mono.just(dfhcommarea), Dfhcommarea.class).retrieve().bodyToMono(Dfhcommarea.class);// .timeout(Duration.ofMillis(10_000));
+
                 dfhcommarea = lgicdb01Resp.block();
                 System.out.println("dfhcommarea.getCaCustomerNum():" + dfhcommarea.getCaCustomerNum());
             } catch (Exception e) {
@@ -216,8 +214,7 @@ public class Lgicus01 {
         } else {
             try {
                 Mono<Dfhcommarea> aaaaaaaaResp = webClientBuilder.post().uri(aaaaaaaa_URI)
-                        .body(Mono.just(dfhcommarea), Dfhcommarea.class).retrieve().bodyToMono(Dfhcommarea.class)
-                        .timeout(Duration.ofMillis(10_000));
+                        .body(Mono.just(dfhcommarea), Dfhcommarea.class).retrieve().bodyToMono(Dfhcommarea.class);// .timeout(Duration.ofMillis(10_000));
                 dfhcommarea = aaaaaaaaResp.block();
             } catch (Exception e) {
                 log.error(e);
@@ -239,8 +236,7 @@ public class Lgicus01 {
         errorMsg.setEmTime(wsTime.substring(0, 6));
         try {
             Mono<ErrorMsg> lgstsqResp = webClientBuilder.post().uri(lgstsq_URI)
-                    .body(Mono.just(errorMsg), ErrorMsg.class).retrieve().bodyToMono(ErrorMsg.class)
-                    .timeout(Duration.ofMillis(10_000));
+                    .body(Mono.just(errorMsg), ErrorMsg.class).retrieve().bodyToMono(ErrorMsg.class);// .timeout(Duration.ofMillis(10_000));
             errorMsg = lgstsqResp.block();
         } catch (Exception e) {
             log.error(e);
@@ -250,8 +246,7 @@ public class Lgicus01 {
                 caData = (dfhcommarea.getCaRequestId().substring(0, 3));
                 try {
                     Mono<ErrorMsg> lgstsqResp = webClientBuilder.post().uri(lgstsq_URI)
-                            .body(Mono.just(errorMsg), ErrorMsg.class).retrieve().bodyToMono(ErrorMsg.class)
-                            .timeout(Duration.ofMillis(10_000));
+                            .body(Mono.just(errorMsg), ErrorMsg.class).retrieve().bodyToMono(ErrorMsg.class);// .timeout(Duration.ofMillis(10_000));
                     errorMsg = lgstsqResp.block();
                 } catch (Exception e) {
                     log.error(e);
@@ -262,8 +257,7 @@ public class Lgicus01 {
                         + dfhcommarea.getCaRequestSpecific().substring(0, 72));
                 try {
                     Mono<ErrorMsg> lgstsqResp = webClientBuilder.post().uri(lgstsq_URI)
-                            .body(Mono.just(errorMsg), ErrorMsg.class).retrieve().bodyToMono(ErrorMsg.class)
-                            .timeout(Duration.ofMillis(10_000));
+                            .body(Mono.just(errorMsg), ErrorMsg.class).retrieve().bodyToMono(ErrorMsg.class);// .timeout(Duration.ofMillis(10_000));
                     errorMsg = lgstsqResp.block();
                 } catch (Exception e) {
                     log.error(e);
