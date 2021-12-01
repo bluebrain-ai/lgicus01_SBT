@@ -595,3 +595,37 @@ java.lang.NullPointerException: Cannot invoke "com.bluescript.demo.model.CaCusto
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.53.jar:9.0.53]
 	at java.base/java.lang.Thread.run(Thread.java:832) ~[na:na]
 
+2021-12-01 14:26:11.440  INFO 6016 --- [main] com.bluescript.demo.lgicus01Main         : Starting lgicus01Main using Java 14 on LAPTOP-1RPTTI2Q with PID 6016 (D:\BLUESCRIPT_DEMO\End-2-EndTestData\JavaMicroservices\Customer\lgicus01_SBT\target\classes started by jarvi in d:\BLUESCRIPT_DEMO\End-2-EndTestData\JavaMicroservices\Customer\lgicus01_SBT)
+2021-12-01 14:26:11.442  INFO 6016 --- [main] com.bluescript.demo.lgicus01Main         : No active profile set, falling back to default profiles: default
+2021-12-01 14:26:12.265  INFO 6016 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-12-01 14:26:12.268  INFO 6016 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-12-01 14:26:12.395  INFO 6016 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 118 ms. Found 1 JPA repository interfaces.
+2021-12-01 14:26:12.416  INFO 6016 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode!
+2021-12-01 14:26:12.418  INFO 6016 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2021-12-01 14:26:12.433  INFO 6016 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface com.bluescript.demo.repository.MqControlRepository. If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository.
+2021-12-01 14:26:12.433  INFO 6016 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 4 ms. Found 0 Redis repository interfaces.
+2021-12-01 14:26:12.972  INFO 6016 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9981 (http)
+2021-12-01 14:26:12.983  INFO 6016 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-12-01 14:26:12.983  INFO 6016 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.53]
+2021-12-01 14:26:13.103  INFO 6016 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-12-01 14:26:13.104  INFO 6016 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1631 ms
+2021-12-01 14:26:13.248  INFO 6016 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-12-01 14:26:13.294  INFO 6016 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-12-01 14:26:13.403  INFO 6016 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-12-01 14:26:13.514  INFO 6016 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-12-01 14:26:13.569  INFO 6016 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-12-01 14:26:13.586  INFO 6016 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2021-12-01 14:26:14.009  INFO 6016 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-12-01 14:26:14.015  INFO 6016 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-12-01 14:26:14.385  WARN 6016 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-12-01 14:26:15.608  INFO 6016 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9981 (http) with context path ''
+2021-12-01 14:26:15.935  INFO 6016 --- [main] com.bluescript.demo.lgicus01Main         : Started lgicus01Main in 4.744 seconds (JVM running for 5.204)
+2021-12-01 14:26:52.866  INFO 6016 --- [http-nio-9981-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-12-01 14:26:52.866  INFO 6016 --- [http-nio-9981-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-12-01 14:26:52.868  INFO 6016 --- [http-nio-9981-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-12-01 14:26:52.997  INFO 6016 --- [http-nio-9981-exec-1] com.bluescript.demo.Lgicus01             : mqReadRecord:null
+2021-12-01 14:26:52.997  WARN 6016 --- [http-nio-9981-exec-1] com.bluescript.demo.Lgicus01             : lgicdb01Resp: Triggered
+2021-12-01 14:27:02.033  INFO 6016 --- [http-nio-9981-exec-2] com.bluescript.demo.Lgicus01             : mqReadRecord:null
+2021-12-01 14:27:02.034  WARN 6016 --- [http-nio-9981-exec-2] com.bluescript.demo.Lgicus01             : lgicdb01Resp: Triggered
+2021-12-01 14:27:30.417  INFO 6016 --- [http-nio-9981-exec-3] com.bluescript.demo.Lgicus01             : mqReadRecord:null
+2021-12-01 14:27:30.417  WARN 6016 --- [http-nio-9981-exec-3] com.bluescript.demo.Lgicus01             : lgicdb01Resp: Triggered
